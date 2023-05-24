@@ -1,0 +1,160 @@
+<style>
+  .notice-container {
+    position: absolute;
+    margin-top: -90px;
+    z-index: 9000;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .upload {
+    position: relative;
+    display: inline-block;
+    background-color: #F2F2F2;
+    border: 1px solid #01DF3A;
+    color: #04B404;
+    padding: 8px 35px 8px 14px;
+    border-radius: 4px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    transition: opacity 0.5s;
+  }
+  
+  .upload.hide {
+    opacity: 0;
+    display:none;
+    z-index: 0;
+  }
+  
+  
+  .update {
+    position: relative;
+    display: inline-block;
+    background-color: #F2F2F2;
+    border: 1px solid #2ECCFA;
+    color: #2E9AFE;
+    padding: 8px 35px 8px 14px;
+    border-radius: 4px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    transition: opacity 0.5s;
+  }
+  
+  .update.hide {
+    opacity: 0;
+    display:none;
+    z-index: 0;
+  }
+  
+
+
+
+
+
+
+
+  .delete {
+    position: relative;
+    display: inline-block;
+    background-color: #F2F2F2;
+    border: 1px solid #ff6666;
+    color: #cc0000;
+    padding: 8px 35px 8px 14px;
+    border-radius: 4px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    transition: opacity 0.5s;
+  }
+  
+  .delete.hide {
+    opacity: 0;
+    display:none;
+    z-index: 0;
+  }
+
+
+
+
+
+
+
+
+  .close-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 6px;
+    cursor: pointer;
+  }
+</style>
+
+
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+
+    <% if msg.include?('uploaded') %>
+      <div class="notice-container">
+        <div class="upload" id="notice">
+          <strong class="font-bold">Status:</strong>
+          <span class="block sm:inline"><%= msg %></span>
+          <span class="close-icon">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+      </div>
+    <% end %>
+
+    <% if msg.include?('updated') %>
+      <div class="notice-container">
+        <div class="update" id="notice">
+          <strong class="font-bold">Status:</strong>
+          <span class="block sm:inline"><%= msg %></span>
+          <span class="close-icon">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+      </div>
+    <% end %>
+
+
+    <% if msg.include?('deleted') %>
+     <div class="notice-container">
+        <div class="delete" id="notice">
+          <strong class="font-bold">Status:</strong>
+          <span class="block sm:inline"><%= msg %></span>
+          <span class="close-icon">
+            <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+          </span>
+        </div>
+      </div>
+    <% end %>
+
+  <% end %>
+<% end %>
+
+
+<script>
+  var closeIcon = document.querySelector(".close-icon");
+  var noticeElement = document.getElementById("notice");
+
+
+setTimeout(function() {
+      noticeElement.classList.add("hide");
+    }, 5000); // Wait for additional 5 seconds before adding the "hide" class
+
+
+  closeIcon.addEventListener("click", function() {
+    noticeElement.style.opacity = "0";
+    noticeElement.classList.add("hide");
+    setTimeout(function() {
+        noticeElement.classList.add("hide");
+    }, 3000); // Delay the removal of the notice element for 3 seconds
+  });
+</script>
+

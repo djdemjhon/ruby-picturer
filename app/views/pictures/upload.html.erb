@@ -1,0 +1,23 @@
+  <body class="bg-black mt-5">
+  <div class="max-w-sm mx-auto bg-neutral-900 p-10 rounded-md">
+
+
+<%= form_with(model: @picture, url: pictures_path, local: true, html: { id: 'upload-form', multipart: true }) do |form| %>
+  <!-- Form fields -->
+
+  <div class="mb-4">
+    <%= form.label :image_name, class: "block text-white font-medium mb-1" %>
+    <%= form.text_field :image_name, class: "form-input w-full border border-gray-300 rounded-md" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :attached_image_file, class: "block text-white font-medium mb-1" %>
+    <%= form.file_field :attached_image_file, class: "form-input w-full border border-gray-300 rounded-md", id: "attached_image_file" %>
+  </div>
+ <div class="flex justify-center mt-10" style="padding-top:25px;">
+  <%= form.submit "Upload", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+<% end %>
+</div>
+
+</body>

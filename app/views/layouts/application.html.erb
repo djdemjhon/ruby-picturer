@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Picturer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  </head>
+
+  <style>
+.material-icons {
+  font-size: 19px;
+  margin-bottom: 4px;
+}
+</style>
+
+  <body>
+    <main class="bg-black container mx-auto mt-28 px-5 flex">
+<nav class="bg-neutral-950 py-2 fixed top-0 left-0 right-0" style="z-index: 1000;">
+  <div class="container mx-auto px-4 flex justify-between items-center">
+    <a href="<%= root_path %>" class="text-white font-bold text-xl">Picturer</a>
+    <div class="flex items-center space-x-3">
+      <a href="<%= root_path %>" class="text-gray-400 hover:text-white">
+        <i class="material-icons" style="vertical-align: middle;">home</i>
+        Home
+      </a>
+      <a href="<%= pictures_upload_path %>" class="text-gray-400 hover:text-white">
+        <i class="material-icons" style="vertical-align: middle;">cloud_upload</i>
+        Upload
+      </a>
+      <a href="#" class="text-gray-400 hover:text-white">
+        <i class="material-icons" style="vertical-align: middle;">whatshot</i>
+        Popular
+      </a>
+    </div>
+    <div>
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Start Free Trial</button>
+  
+
+  
+    </div>
+  </div>
+</nav>
+
+<%= render 'layouts/flash_msgs' %>
+      <%= yield %>
+    </main>
+  </body>
+</html>
