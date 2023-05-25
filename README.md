@@ -6,7 +6,7 @@
 </span>
 
 
-## Hello guys, I made the simpliest documentation guides for this project. Enjoy!
+## Simple documentation guides for this project. Enjoy!
 
 Things you need to implement:
 
@@ -29,10 +29,6 @@ Things you need to implement:
 * Create web templates
 
 * Configuration for routes
-
-* Generate model for picture
-
-* Generate uploader setup via Carrierwave
 
 * Setup other stuff like flash notice.
 
